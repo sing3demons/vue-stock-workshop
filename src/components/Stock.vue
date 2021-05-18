@@ -1,5 +1,13 @@
 <template>
-    <h1>Stock</h1>
+    <v-container>
+        <v-row>
+            <v-col>
+                <v-card>
+                    <h1>x</h1>
+                </v-card>
+            </v-col>
+        </v-row>
+    </v-container>
 </template>
 
 <script>
