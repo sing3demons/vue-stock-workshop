@@ -4,9 +4,9 @@ import VueRouter from 'vue-router'
 import Login from '@/components/Login.vue'
 import Register from '@/components/Register.vue'
 import Report from '@/components/Report.vue'
-import Stock from '@/components/Stock.vue'
-import StockCreate from '@/components/StockCreate.vue'
-import StockEdit from '@/components/StockEdit.vue'
+import Stock from '@/components/stock/Stock.vue'
+import StockCreate from '@/components/stock/StockCreate.vue'
+import StockEdit from '@/components/stock/StockEdit.vue'
 
 Vue.use(VueRouter)
 

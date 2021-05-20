@@ -1,11 +1,13 @@
 <template>
-   <v-content>
-    <router-view></router-view>
-  </v-content>
+    <v-main>
+        <router-view></router-view>
+    </v-main>
 </template>
 
 <script>
-export default {}
+export default {
+    mounted() {}
+}
 </script>
 
 <style>

@@ -1,8 +1,8 @@
  <template>
     <!-- <v-sheet app height="400" class="overflow-hidden" style="position: relative;"> -->
     <v-navigation-drawer app permanent absolute dark src="@/assets/background_menu.jpg">
-     <router-link to="/" exact>
-        <!-- <v-list-item>
+        <router-link to="/" exact>
+            <!-- <v-list-item>
             <v-list-item-avatar>
                 <v-img src="https://randomuser.me/api/portraits/men/78.jpg"></v-img>
             </v-list-item-avatar>
@@ -10,8 +10,8 @@
             <v-list-item-content>
                 <v-list-item-title>John Leider</v-list-item-title>
             </v-list-item-content>
-        </v-list-item>-->
-       
+            </v-list-item>-->
+
             <img src="@/assets/vue_display.jpg" alt width="100%" />
         </router-link>
 
@@ -39,8 +39,11 @@ export default {
     // props: ['toggle'],
     methods: {
         onClickMenu(link) {
-            this.$router.push(link)
+            this.$router.push(link).catch(err => err == null)
         }
+    },
+    mounted() {
+        this.selectedMenu = this.menus.findIndex(menu => menu.route == this.$route.path)
     },
     data: () => ({
         selectedMenu: 0,
@@ -54,7 +57,12 @@ export default {
             { icon: 'mdi-chart-areaspline', title: 'Report', route: '/report' },
             { icon: 'mdi-text-box-check-outline', title: 'About', route: '/about' }
         ]
-    })
+    }),
+    watch: {
+        $route(to) {
+            this.selectedMenu = this.menus.findIndex(menu => menu.route == to.path)
+        }
+    }
 }
 </script>
 

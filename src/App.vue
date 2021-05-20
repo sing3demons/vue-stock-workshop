@@ -22,6 +22,9 @@ export default {
     },
     data: () => ({
         opentDrawer: null
-    })
+    }),
+    mounted() {
+        this.$store.dispatch({ type: 'restoreLogin' })
+    }
 }
 </script>

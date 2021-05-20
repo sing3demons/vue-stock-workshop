@@ -1,6 +1,5 @@
 <template>
-    <v-app-bar app color="deep-purple accent-4" dense dark>
-        <v-app-bar-nav-icon @click.stop="openToggle" />
+    <v-app-bar app color="green accent-4" dense dark>
         <v-toolbar-title>Stock Workshop</v-toolbar-title>
         <v-spacer />
         <v-btn icon>
@@ -21,14 +20,17 @@
                 </v-list-item>
             </v-list>
         </v-menu>
+        <v-btn icon @click="onClickLogOff">
+            <v-icon>mdi-export</v-icon>
+        </v-btn>
     </v-app-bar>
 </template>
 
 <script>
 export default {
     methods: {
-        openToggle() {
-            this.$emit('openToggle', (this.drawer = !this.drawer))
+        onClickLogOff() {
+            this.$store.dispatch('doLogout')
         }
     },
     data: () => ({

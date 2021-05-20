@@ -8,15 +8,16 @@ Vue.use(Vuex)
 export default new Vuex.Store({
     state: {
         isLogged: false,
-        token: ''
+
     },
     mutations: {
         SET_LOGGED_IN(state) {
-            state.isLogged = true
+            let token = localStorage.getItem('token')
+            if (token != '') {
+                state.isLogged = true
+            }
         },
-        SET_TOKEN(state, value) {
-            state.token = value
-        },
+
         SET_LOGGED_OUT(state) {
             state.isLogged = false
         }
@@ -41,17 +42,28 @@ export default new Vuex.Store({
 
             // if (data == true) {
             commit('SET_LOGGED_IN')
-            commit('SET_TOKEN', data.token)
+
             // } else {
             //     dispatch('doLogout', {})
             // }
         },
-        // doLogout({
-        //     commit
-        // }) {
-        //     commit('SET_LOGGED_OUT')
-        //     commit('SET_EMAIL', '')
-        // }
+        doLogout({
+            commit
+        }) {
+            localStorage.removeItem('token');
+            router.push("/login");
+            commit("SET_LOGGED_OUT");
+
+        },
+        restoreLogin({
+            commit
+        }) {
+            let token = localStorage.getItem('token')
+            if (token != '') {
+                commit("SET_LOGGED_IN");
+            }
+        },
+
     },
     modules: {}
 })

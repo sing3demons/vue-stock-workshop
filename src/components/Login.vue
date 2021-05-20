@@ -45,11 +45,18 @@ export default {
         emailRules: [v1 => !!v1 || 'email is required'],
         passwordRules: [v1 => !!v1 || 'password is required']
     }),
+    mounted() {
+        if (this.isLoggedIn()) {
+            this.$router.push('/stock')
+        }
+    },
     methods: {
         onSubmit() {
-            // console.log(this.account.email)
-            // console.log(this.account.password)
             this.$store.dispatch({ type: 'doLogin', email: this.account.email, password: this.account.password })
+        },
+        isLoggedIn() {
+            let token = localStorage.getItem('token')
+            return token != null
         }
     }
 }
